@@ -1,11 +1,6 @@
-from pydantic import BaseModel
-from enum import Enum
+from pydantic import BaseModel, Field
 
-class TaskStatus(str, Enum):
-    PENDING = "pending"
-    IN_PROGRESS = "in_progress"
-    COMPLETED = "completed"
-    CANCELLED = "cancelled"
+from app.enum import TaskStatus
 
 
 class CreateTaskRequest(BaseModel):
@@ -22,3 +17,11 @@ class TaskResponse(BaseModel):
     #date_created, deadline,
     class Config():
         from_attributes = True
+
+class UserRequest(BaseModel):
+    login: str = Field(..., max_length=127)
+
+class UserResponse(UserRequest):
+    model_config = {"from_attributes": True}
+
+    id: int
