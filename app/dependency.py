@@ -19,7 +19,7 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security),
-                     db: Session = Depends(get_db)) -> User:
+                    db: Session = Depends(get_db)) -> User:
     login = credentials.credentials
 
     user = users_repository.get_user(db, login)

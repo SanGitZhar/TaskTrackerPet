@@ -16,7 +16,7 @@ class Task(Base):
 
     __tablename__ = "task"
     id: Mapped[int] = mapped_column(primary_key=True)
-    title = Mapped[str]
-    description = Mapped[str | None] = mapped_column(default=None)
-    status = Mapped[TaskStatus]
-    user_id = Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False)
+    title: Mapped[str]
+    description: Mapped[str | None] = mapped_column(default=None)
+    status: Mapped[TaskStatus]
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False)

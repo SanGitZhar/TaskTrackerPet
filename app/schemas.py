@@ -13,7 +13,7 @@ class TaskResponse(BaseModel):
     id: int
     title: str
     description: str | None=None
-    description: TaskStatus
+    status: TaskStatus
     #date_created, deadline,
     class Config():
         from_attributes = True
