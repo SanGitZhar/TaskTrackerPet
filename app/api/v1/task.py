@@ -13,6 +13,11 @@ def create_task(task: CreateTaskRequest, db: Session = Depends(get_db),
                 current_user: User = Depends(get_current_user)):
     return task_service.create_task(db, current_user, task)
 
-@router.get("/task")
-def get_task():
-    pass
+@router.get("/task", response_model=TaskResponse)
+def get_task(task_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    return task_service.get_task(db, current_user, task_id)
+#Доделать
+# @router.get("/task", response_model=list[TaskResponse])
+# def get_task(task_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+#     return task_service.get_task(db, current_user, task_id)
+# #Доделать
